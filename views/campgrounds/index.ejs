@@ -3,8 +3,7 @@
     <a href="/campgrounds/new">Add new campground</a>
     <ul>
         <% for(let campground of campgrounds) { %>
-            <li><a href="/campgrounds/<%= campground._id %>"><%= campground.title %></a></li>
-            <div class="card" mb-3>
+            <div class="card my-2" >
                 <div class="row">
                     <div class="col-md-4">
                         <img src="<%= campground.image %>" alt="" class="img-fluid">
