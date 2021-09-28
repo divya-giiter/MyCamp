@@ -9,6 +9,7 @@ const joi = require('joi');
 const {campgroundSchema} = require('./schemas.js');
 const Campground = require('./models/campground.js');
 const { nextTick, send } = require('process');
+const Review = require('./models/review');
 
 
 mongoose.connect('mongodb://localhost:27017/my-camp', {
@@ -84,15 +85,23 @@ app.delete('/campgrounds/:id', catchAsync( async(req,res) => {
     res.redirect('/campgrounds');
 }))
 
+app.post('/campgrounds/:id/reviews', catchAsync(async (req, res) => {
+    const campground = await Campground.findById(req.params.id);
+    const review = new Review(req.body.review);
+    campground.reviews.push(review);
+    await review.save();
+    await campground.save();
+    res.redirect(`/campgrounds/${campground._id}`);
+}))
+
+app.all('*', (req, res, next) => {
+    next(new ExpressError('Page Not Found', 404))
+})
 
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
     if(!err.message) err.message = 'Oh No, Something Went Wrong!';
     res.status(statusCode).render('error', {err}); 
-})
-
-app.all('*', (req, res, next) => {
-    next(new ExpressError('Page Not Found', 404))
 })
 
 app.listen(3000, () => {
