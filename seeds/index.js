@@ -24,26 +24,25 @@ const seedDB = async () => {
         const ran406 = Math.floor(Math.random() * 406);
         const price = Math.floor(Math.random() * 2000) + 800;
         const camp = new Campground({
-            author: "615ab3f997eae6ee10f25013",
+            author: "6155e50ab21cccdc2405ada2",
             location: `${(cities[ran406].city)}, ${(cities[ran406].admin_name)}`,
             title: `${sample(descriptors)} ${sample(places)}`,
             images:  [
                 {
-                    url: 'https://res.cloudinary.com/douqbebwk/image/upload/v1600060601/YelpCamp/ahfnenvca4tha00h2ubt.png',
-                    filename: 'YelpCamp/ahfnenvca4tha00h2ubt'
+                  url: 'https://res.cloudinary.com/de7i25hsd/image/upload/v1633447529/MyCamp/white-mountains_mxokfy.jpg',
+                  filename: 'MyCamp/white-mountains_mxokfy'
                 },
                 {
-                    url: 'https://res.cloudinary.com/douqbebwk/image/upload/v1600060601/YelpCamp/ruyoaxgf72nzpi4y6cdi.png',
-                    filename: 'YelpCamp/ruyoaxgf72nzpi4y6cdi'
+                  url: 'https://res.cloudinary.com/de7i25hsd/image/upload/v1633447736/MyCamp/lake_xzwo59.jpg',
+                  filename: 'MyCamp/lake_xzwo59'
                 }
-            ],
+              ]
+              ,
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quo delectus voluptatum consectetur eligendi qui voluptate, rem similique aspernatur laudantium earum deleniti, ipsam mollitia, neque odio atque. Sed, enim ipsam?',
             price 
         })
         await camp.save();
     }
-    const c = new Campground({title: 'Purple Field'});
-    await c.save();
 }
 
 seedDB().then(() => {
