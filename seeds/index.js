@@ -36,8 +36,11 @@ const seedDB = async () => {
                   url: 'https://res.cloudinary.com/de7i25hsd/image/upload/v1633447736/MyCamp/lake_xzwo59.jpg',
                   filename: 'MyCamp/lake_xzwo59'
                 }
-              ]
-              ,
+              ],
+              geometry: { 
+                  type: 'Point', 
+                  coordinates: [ 72.83333, 18.96667 ] 
+                },
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quo delectus voluptatum consectetur eligendi qui voluptate, rem similique aspernatur laudantium earum deleniti, ipsam mollitia, neque odio atque. Sed, enim ipsam?',
             price 
         })
